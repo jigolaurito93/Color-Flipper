@@ -2,9 +2,7 @@ const newColorBtnElement = document.getElementById('new-color-button');
 
 const currentColor = document.getElementById('current-color');
 
-newColorBtnElement.addEventListener('click', function () {
-alert('ok')
-})
+
 
 const hexValues = [
     '0',
@@ -25,3 +23,24 @@ const hexValues = [
     'F'
 ] ; 
 
+function getRandomHexValue() {
+    const randomIndexPosition = Math.floor(Math.random() * hexValues.length);
+
+    const randomHexValue = hexValues[randomIndexPosition];
+
+    return randomHexValue;
+}
+
+function getRandomHexString(stringLength){
+    let hexString = '';
+    for (let i = 0; i < stringLength; i++){
+        hexString += getRandomHexValue();
+    }
+
+    return hexString;
+}
+
+newColorBtnElement.addEventListener('click', function () {
+    const randomHexString = getRandomHexString(6);
+    alert(randomHexString)
+    })
